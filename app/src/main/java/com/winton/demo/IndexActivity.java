@@ -12,7 +12,7 @@ import com.winton.demo.adapter.DemoBeanAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class IndexActivity extends AppCompatActivity {
+public class IndexActivity extends BaseActivity {
     private ListView mLVDemo;
     private List<DemoBean> mSource;
     private DemoBeanAdapter mAdapter;
@@ -27,7 +27,7 @@ public class IndexActivity extends AppCompatActivity {
     private void initData(){
         mSource = new ArrayList<>();
         Intent intent = new Intent(this,AnimDemoActivity.class);
-        mSource.add(new DemoBean("动画大全",intent));
+        mSource.add(new DemoBean("基本动画",intent));
 
         mAdapter = new DemoBeanAdapter(mSource,this);
         mLVDemo.setAdapter(mAdapter);

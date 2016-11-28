@@ -16,8 +16,12 @@ import android.widget.ImageView;
 public class AnimDemoActivity extends BaseActivity implements View.OnClickListener{
     private ImageView mIVAnim;
     private Button mBtScale;
+    private Button mBtAlpha;
+    private Button mBtRotate;
 
     private Animation scaleAnimation;
+    private Animation alphaAnimation;
+    private Animation rotateAnimation;
 
 
     @Override
@@ -26,21 +30,37 @@ public class AnimDemoActivity extends BaseActivity implements View.OnClickListen
         setContentView(R.layout.activity_anim_demo);
         mIVAnim = (ImageView)findViewById(R.id.iv_anim);
         mBtScale = (Button) findViewById(R.id.bt_anim_scale);
+        mBtAlpha = (Button)findViewById(R.id.bt_anim_alpha);
+        mBtRotate = (Button)findViewById(R.id.bt_anim_rotate) ;
         initData();
         initListener();
     }
 
     private void initData(){
         scaleAnimation = AnimationUtils.loadAnimation(AnimDemoActivity.this,R.anim.scale);
+        alphaAnimation = AnimationUtils.loadAnimation(AnimDemoActivity.this,R.anim.alpha);
+        rotateAnimation = AnimationUtils.loadAnimation(AnimDemoActivity.this,R.anim.rotate);
+
     }
     private void initListener(){
         mBtScale.setOnClickListener(this);
+        mBtAlpha.setOnClickListener(this);
+        mBtRotate.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
         if(view == mBtScale){
             mIVAnim.startAnimation(scaleAnimation);
+            return;
+        }
+        if(view == mBtAlpha){
+            mIVAnim.clearAnimation();
+            mIVAnim.startAnimation(alphaAnimation);
+        }
+        if(view == mBtRotate){
+            mIVAnim.clearAnimation();
+            mIVAnim.startAnimation(rotateAnimation);
         }
     }
 
