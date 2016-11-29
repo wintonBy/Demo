@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.view.animation.ScaleAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
 
@@ -22,6 +23,8 @@ public class AnimDemoActivity extends BaseActivity implements View.OnClickListen
     private Animation scaleAnimation;
     private Animation alphaAnimation;
     private Animation rotateAnimation;
+
+    private ScaleAnimation mScaleAnimation;
 
 
     @Override
@@ -41,6 +44,12 @@ public class AnimDemoActivity extends BaseActivity implements View.OnClickListen
         alphaAnimation = AnimationUtils.loadAnimation(AnimDemoActivity.this,R.anim.alpha);
         rotateAnimation = AnimationUtils.loadAnimation(AnimDemoActivity.this,R.anim.rotate);
 
+        /*code*/
+        mScaleAnimation = new ScaleAnimation(0,1,0,1);
+        mScaleAnimation.setDuration(2000);
+        mScaleAnimation.setRepeatCount(4);
+        mScaleAnimation.setRepeatMode(Animation.REVERSE);
+
     }
     private void initListener(){
         mBtScale.setOnClickListener(this);
@@ -52,6 +61,7 @@ public class AnimDemoActivity extends BaseActivity implements View.OnClickListen
     public void onClick(View view) {
         if(view == mBtScale){
             mIVAnim.startAnimation(scaleAnimation);
+//            mIVAnim.startAnimation(mScaleAnimation);
             return;
         }
         if(view == mBtAlpha){
