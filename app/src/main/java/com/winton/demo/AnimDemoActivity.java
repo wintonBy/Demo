@@ -1,9 +1,9 @@
 package com.winton.demo;
 
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.ScaleAnimation;
@@ -25,6 +25,7 @@ public class AnimDemoActivity extends BaseActivity implements View.OnClickListen
     private Animation rotateAnimation;
 
     private ScaleAnimation mScaleAnimation;
+    private AlphaAnimation mAlphaAnimation;
 
 
     @Override
@@ -49,6 +50,10 @@ public class AnimDemoActivity extends BaseActivity implements View.OnClickListen
         mScaleAnimation.setDuration(2000);
         mScaleAnimation.setRepeatCount(4);
         mScaleAnimation.setRepeatMode(Animation.REVERSE);
+        mAlphaAnimation = new AlphaAnimation(0,1);
+        mAlphaAnimation.setDuration(2000);
+        mAlphaAnimation.setRepeatMode(Animation.REVERSE);
+        mAlphaAnimation.setRepeatCount(5);
 
     }
     private void initListener(){
@@ -66,8 +71,10 @@ public class AnimDemoActivity extends BaseActivity implements View.OnClickListen
         }
         if(view == mBtAlpha){
             mIVAnim.clearAnimation();
-            mIVAnim.startAnimation(alphaAnimation);
+//            mIVAnim.startAnimation(alphaAnimation);
+            mIVAnim.startAnimation(mAlphaAnimation);
         }
+
         if(view == mBtRotate){
             mIVAnim.clearAnimation();
             mIVAnim.startAnimation(rotateAnimation);
