@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.view.animation.RotateAnimation;
 import android.view.animation.ScaleAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -19,13 +20,16 @@ public class AnimDemoActivity extends BaseActivity implements View.OnClickListen
     private Button mBtScale;
     private Button mBtAlpha;
     private Button mBtRotate;
+    private Button mBtTranslate;
 
     private Animation scaleAnimation;
     private Animation alphaAnimation;
     private Animation rotateAnimation;
+    private Animation translateAnimation;
 
     private ScaleAnimation mScaleAnimation;
     private AlphaAnimation mAlphaAnimation;
+    private RotateAnimation mRotateAnimation;
 
 
     @Override
@@ -36,6 +40,7 @@ public class AnimDemoActivity extends BaseActivity implements View.OnClickListen
         mBtScale = (Button) findViewById(R.id.bt_anim_scale);
         mBtAlpha = (Button)findViewById(R.id.bt_anim_alpha);
         mBtRotate = (Button)findViewById(R.id.bt_anim_rotate) ;
+        mBtTranslate = (Button)findViewById(R.id.bt_anim_translate);
         initData();
         initListener();
     }
@@ -44,6 +49,7 @@ public class AnimDemoActivity extends BaseActivity implements View.OnClickListen
         scaleAnimation = AnimationUtils.loadAnimation(AnimDemoActivity.this,R.anim.scale);
         alphaAnimation = AnimationUtils.loadAnimation(AnimDemoActivity.this,R.anim.alpha);
         rotateAnimation = AnimationUtils.loadAnimation(AnimDemoActivity.this,R.anim.rotate);
+        translateAnimation = AnimationUtils.loadAnimation(AnimDemoActivity.this,R.anim.translate);
 
         /*code*/
         mScaleAnimation = new ScaleAnimation(0,1,0,1);
@@ -54,12 +60,18 @@ public class AnimDemoActivity extends BaseActivity implements View.OnClickListen
         mAlphaAnimation.setDuration(2000);
         mAlphaAnimation.setRepeatMode(Animation.REVERSE);
         mAlphaAnimation.setRepeatCount(5);
+        mRotateAnimation = new RotateAnimation(0,90,50,50);
+        mRotateAnimation.setDuration(2000);
+        mRotateAnimation.setRepeatCount(4);
+        mRotateAnimation.setRepeatMode(Animation.REVERSE);
+        mRotateAnimation.setInterpolator(this,android.R.anim.accelerate_interpolator);
 
     }
     private void initListener(){
         mBtScale.setOnClickListener(this);
         mBtAlpha.setOnClickListener(this);
         mBtRotate.setOnClickListener(this);
+        mBtTranslate.setOnClickListener(this);
     }
 
     @Override
@@ -78,6 +90,11 @@ public class AnimDemoActivity extends BaseActivity implements View.OnClickListen
         if(view == mBtRotate){
             mIVAnim.clearAnimation();
             mIVAnim.startAnimation(rotateAnimation);
+//            mIVAnim.startAnimation(mRotateAnimation);
+        }
+        if(view == mBtTranslate){
+            mIVAnim.clearAnimation();
+            mIVAnim.startAnimation(translateAnimation);
         }
     }
 

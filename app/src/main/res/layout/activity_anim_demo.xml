@@ -34,6 +34,12 @@
                 android:text="rotate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
+            <Button
+                android:layout_marginLeft="10dp"
+                android:id="@+id/bt_anim_translate"
+                android:text="translate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
         </LinearLayout>
     </HorizontalScrollView>
 
