@@ -8,6 +8,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.RotateAnimation;
 import android.view.animation.ScaleAnimation;
+import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
 
@@ -30,6 +31,7 @@ public class AnimDemoActivity extends BaseActivity implements View.OnClickListen
     private ScaleAnimation mScaleAnimation;
     private AlphaAnimation mAlphaAnimation;
     private RotateAnimation mRotateAnimation;
+    private TranslateAnimation mTranslateAnimation;
 
 
     @Override
@@ -56,15 +58,24 @@ public class AnimDemoActivity extends BaseActivity implements View.OnClickListen
         mScaleAnimation.setDuration(2000);
         mScaleAnimation.setRepeatCount(4);
         mScaleAnimation.setRepeatMode(Animation.REVERSE);
+
         mAlphaAnimation = new AlphaAnimation(0,1);
         mAlphaAnimation.setDuration(2000);
         mAlphaAnimation.setRepeatMode(Animation.REVERSE);
         mAlphaAnimation.setRepeatCount(5);
+
         mRotateAnimation = new RotateAnimation(0,90,50,50);
         mRotateAnimation.setDuration(2000);
         mRotateAnimation.setRepeatCount(4);
         mRotateAnimation.setRepeatMode(Animation.REVERSE);
         mRotateAnimation.setInterpolator(this,android.R.anim.accelerate_interpolator);
+
+        mTranslateAnimation = new TranslateAnimation(0f,200f,0f,100f);
+        mTranslateAnimation.setDuration(2000);
+        mTranslateAnimation.setRepeatCount(4);
+        mTranslateAnimation.setRepeatMode(Animation.RESTART);
+        mTranslateAnimation.setInterpolator(this,android.R.anim.bounce_interpolator);
+
 
     }
     private void initListener(){
@@ -94,7 +105,8 @@ public class AnimDemoActivity extends BaseActivity implements View.OnClickListen
         }
         if(view == mBtTranslate){
             mIVAnim.clearAnimation();
-            mIVAnim.startAnimation(translateAnimation);
+//            mIVAnim.startAnimation(translateAnimation);
+            mIVAnim.startAnimation(mTranslateAnimation);
         }
     }
 
