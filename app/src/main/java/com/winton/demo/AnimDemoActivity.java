@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
+import android.view.animation.AnimationSet;
 import android.view.animation.AnimationUtils;
 import android.view.animation.RotateAnimation;
 import android.view.animation.ScaleAnimation;
@@ -22,16 +23,19 @@ public class AnimDemoActivity extends BaseActivity implements View.OnClickListen
     private Button mBtAlpha;
     private Button mBtRotate;
     private Button mBtTranslate;
+    private Button mBtSet;
 
     private Animation scaleAnimation;
     private Animation alphaAnimation;
     private Animation rotateAnimation;
     private Animation translateAnimation;
+    private Animation setAnimation;
 
     private ScaleAnimation mScaleAnimation;
     private AlphaAnimation mAlphaAnimation;
     private RotateAnimation mRotateAnimation;
     private TranslateAnimation mTranslateAnimation;
+    private AnimationSet mSetAnimation;
 
 
     @Override
@@ -43,6 +47,7 @@ public class AnimDemoActivity extends BaseActivity implements View.OnClickListen
         mBtAlpha = (Button)findViewById(R.id.bt_anim_alpha);
         mBtRotate = (Button)findViewById(R.id.bt_anim_rotate) ;
         mBtTranslate = (Button)findViewById(R.id.bt_anim_translate);
+        mBtSet = (Button)findViewById(R.id.bt_anim_set);
         initData();
         initListener();
     }
@@ -52,6 +57,7 @@ public class AnimDemoActivity extends BaseActivity implements View.OnClickListen
         alphaAnimation = AnimationUtils.loadAnimation(AnimDemoActivity.this,R.anim.alpha);
         rotateAnimation = AnimationUtils.loadAnimation(AnimDemoActivity.this,R.anim.rotate);
         translateAnimation = AnimationUtils.loadAnimation(AnimDemoActivity.this,R.anim.translate);
+        setAnimation = AnimationUtils.loadAnimation(AnimDemoActivity.this,R.anim.set);
 
         /*code*/
         mScaleAnimation = new ScaleAnimation(0,1,0,1);
@@ -76,6 +82,13 @@ public class AnimDemoActivity extends BaseActivity implements View.OnClickListen
         mTranslateAnimation.setRepeatMode(Animation.RESTART);
         mTranslateAnimation.setInterpolator(this,android.R.anim.bounce_interpolator);
 
+        mSetAnimation = new AnimationSet(this,null);
+        mSetAnimation.setRepeatMode(Animation.RESTART);
+        mSetAnimation.setDuration(500);
+        mSetAnimation.addAnimation(mScaleAnimation);
+        mSetAnimation.addAnimation(mAlphaAnimation);
+        mSetAnimation.addAnimation(mRotateAnimation);
+        mSetAnimation.addAnimation(mTranslateAnimation);
 
     }
     private void initListener(){
@@ -83,6 +96,7 @@ public class AnimDemoActivity extends BaseActivity implements View.OnClickListen
         mBtAlpha.setOnClickListener(this);
         mBtRotate.setOnClickListener(this);
         mBtTranslate.setOnClickListener(this);
+        mBtSet.setOnClickListener(this);
     }
 
     @Override
@@ -108,6 +122,12 @@ public class AnimDemoActivity extends BaseActivity implements View.OnClickListen
 //            mIVAnim.startAnimation(translateAnimation);
             mIVAnim.startAnimation(mTranslateAnimation);
         }
+        if(view == mBtSet){
+            mIVAnim.clearAnimation();
+            mIVAnim.startAnimation(setAnimation);
+//            mIVAnim.startAnimation(mSetAnimation);
+        }
+
     }
 
     @Override
