@@ -1,7 +1,6 @@
 package com.winton.demo;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -25,14 +24,26 @@ public class IndexActivity extends BaseActivity {
         initData();
     }
     private void initData(){
-        mSource = new ArrayList<>();
-        Intent intent = new Intent(this,AnimDemoActivity.class);
-        mSource.add(new DemoBean("基本动画",intent));
+
+        initDemoBeans();
 
         mAdapter = new DemoBeanAdapter(mSource,this);
         mLVDemo.setAdapter(mAdapter);
 
     }
+    private void initDemoBeans(){
+        mSource = new ArrayList<>();
+        Intent intent = new Intent(this,AnimDemoActivity.class);
+        mSource.add(new DemoBean("基本动画",intent));
+
+        Intent intent1 = new Intent(this, InterpolatorDemoActivity.class);
+        mSource.add(new DemoBean("动画插值器",intent1));
+
+        Intent intent2 = new Intent(this, ValueAnimatorDemoActivity.class);
+        mSource.add(new DemoBean("属性动画",intent2));
+    }
+
+
     private void initListener(){
         mLVDemo.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

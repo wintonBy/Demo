@@ -21,6 +21,12 @@
         <activity
             android:name=".AnimDemoActivity"
             android:launchMode="singleInstance"/>
+        <activity
+            android:name=".InterpolatorDemoActivity"
+            android:launchMode="singleInstance"/>
+        <activity
+            android:name=".ValueAnimatorDemoActivity"
+            android:launchMode="singleInstance"/>
     </application>
 
 </manifest>
