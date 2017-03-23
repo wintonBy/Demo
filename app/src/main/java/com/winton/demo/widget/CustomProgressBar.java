@@ -8,10 +8,8 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
-import android.widget.ProgressBar;
 
 /**
  * Created by winton on 2017/3/21.
@@ -33,21 +31,21 @@ public class CustomProgressBar extends View {
     private boolean isInit;
     private boolean hasDrawFirst;
     private boolean isLoading;
-    private int viewWidth;
+    private int viewWidth ;
     private int viewHeight;
     private float currentAngle = 0f;
     private ValueAnimator valueAnimator;
     private int animState = 0;
-    private int padding = 20;
+    private int padding =0;
 
 
     private static final int DEFAULT_FIRST_COLOR = Color.parseColor("#E4E4E4");
     private static final int DEFAULT_SECOND_COLOR = Color.parseColor("#DF3B3B");
     private static final int DEFAULT_POINT_COLOR = Color.parseColor("#FEFEFE");
-    private static final int DEFAULT_LINE_HEIGHT = 10;
-    private static final int DEFAULT_POINT_RADIUS = 20;
+    private static final int DEFAULT_LINE_HEIGHT = 16;
+    private static final int DEFAULT_POINT_RADIUS = 16*2;
     private static final int DEFAULT_SMALL_LINE_NUM = 6;
-    private  int ANIMATOR_DURATION = 2000; //动画持续时间
+    private  int ANIMATOR_DURATION = 5000; //动画持续时间
 
     public CustomProgressBar(Context context) {
         this(context,null);
@@ -84,25 +82,50 @@ public class CustomProgressBar extends View {
         }
     }
 
+    /**
+     * 画背景条
+     * @param canvas
+     */
     private void drawLineBar(Canvas canvas){
         mPaint.setStyle(Paint.Style.FILL);
         mPaint.setColor(mFirstColor);
         mPath.reset();
+        /*左下---左上---右上--右下--闭合 ，左右两边预留画Progress Point 的空间*/
         mPath.moveTo(mRadius+padding,viewHeight/2 + mLineHeight/2);
         mPath.quadTo(0+padding,viewHeight/2,mRadius+padding,viewHeight/2-mLineHeight/2);
-        mPath.lineTo(viewWidth-mRadius,viewHeight/2-mLineHeight/2);
-        mPath.quadTo(viewWidth,viewHeight/2,viewWidth-mRadius,viewHeight/2 + mLineHeight/2);
+        mPath.lineTo(viewWidth-mRadius-padding,viewHeight/2-mLineHeight/2);
+        mPath.quadTo(viewWidth-padding,viewHeight/2,viewWidth-mRadius-padding,viewHeight/2 + mLineHeight/2);
+        mPath.close();
+        canvas.drawPath(mPath,mPaint);
+    }
+
+    /**
+     * 画进度条
+     * @param canvas
+     */
+    private void drawProgressLine(Canvas canvas){
+        int width = 0;
+        if(getMax()>0){
+            width = computerWidth(progress,max,viewWidth-2*padding);
+        }
+        mPaint.setColor(mSecondColor);
+        mPath.reset();
+        /*左下---左上---右上--右下--闭合 ，左边预留画Progress Point 的空间*/
+        mPath.moveTo(mRadius+padding,viewHeight/2 + mLineHeight/2);
+        mPath.quadTo(padding,viewHeight/2,mRadius+padding,viewHeight/2-mLineHeight/2);
+        mPath.lineTo(width,viewHeight/2-mLineHeight/2);
+        mPath.lineTo(width,viewHeight/2+mLineHeight/2);
         mPath.close();
         canvas.drawPath(mPath,mPaint);
     }
     /**
-     *
+     * 画Progress Point
      * @param canvas
      */
     private void drawProgressPoint(Canvas canvas){
         int pointX = 0;
         if(getMax()>0){
-            pointX = computerWidth(progress,max,viewWidth) +padding;
+            pointX = computerWidth(progress,max,viewWidth-2*padding) +padding;
         }
         int pointY = viewHeight/2;
         mPaint.setColor(mSecondColor);
@@ -114,30 +137,15 @@ public class CustomProgressBar extends View {
         canvas.drawCircle(pointX,pointY,mPointRadius,mPaint);
         mPaint.setColor(mSecondColor);
         if(isLoading){
-            //画加载转圈
-            if(animState == 0){
-                startLoadingAnim();
-                animState =1;
-            }
-            drawSmallLine(canvas,pointX,pointY);
+            drawLoadingPoint(canvas,pointX,pointY);
         }
         canvas.drawCircle(pointX,pointY,mLineHeight/2,mPaint);
     }
-    private void drawProgressLine(Canvas canvas){
-        int width = 0;
-        if(getMax()>0){
-            width = computerWidth(progress,max,viewWidth);
-        }
-        mPaint.setColor(mSecondColor);
-        mPath.reset();
-        mPath.moveTo(mRadius+padding,viewHeight/2 + mLineHeight/2);
-        mPath.quadTo(0+padding,viewHeight/2,mRadius+padding,viewHeight/2-mLineHeight/2);
-        mPath.lineTo(width,viewHeight/2-mLineHeight/2);
-        mPath.lineTo(width,viewHeight/2+mLineHeight/2);
-        mPath.close();
-        canvas.drawPath(mPath,mPaint);
-    }
 
+    /**
+     * 设置当前进度
+     * @param progress
+     */
     public void setProgress(int progress){
         if(progress <0 || progress >max){
             return;
@@ -145,16 +153,33 @@ public class CustomProgressBar extends View {
         this.progress = progress;
         invalidate();
     }
+
+    /**
+     * 设置最大进度
+     * @param max
+     */
     public void setMax(int max){
         if(max <0 || max <progress){
             return;
         }
         this.max = max;
     }
+
+    /**
+     * 设置是否正在加载
+     * @param isLoading
+     */
     public void setLoading(boolean isLoading){
         this.isLoading = isLoading;
-        if(animState != 0){
-            animState =0;
+        if(isLoading){
+            //启动动画
+            startLoadingAnim();
+        }else {
+            //取消动画
+            if(valueAnimator != null){
+                valueAnimator.cancel();
+                valueAnimator = null;
+            }
         }
         invalidate();
     }
@@ -165,25 +190,41 @@ public class CustomProgressBar extends View {
         return max;
     }
 
+    /**
+     * 计算progress对应的长度
+     * @param progress
+     * @param max
+     * @param viewWidth
+     * @return
+     */
     private int computerWidth(float progress ,float max,float viewWidth){
         int result = (int)(progress/max * viewWidth);
         return result;
     }
 
-    private void drawSmallLine(Canvas canvas,float centerX,float centerY){
-
+    /**
+     * 画加载的小点
+     * @param canvas
+     * @param centerX
+     * @param centerY
+     */
+    private void drawLoadingPoint(Canvas canvas, float centerX, float centerY){
         for(int i =0;i<DEFAULT_SMALL_LINE_NUM;i++){
             float angle = (360/DEFAULT_SMALL_LINE_NUM) * i + currentAngle ;
             mPaint.setStrokeWidth(5);
-            mPaint.setColor(mSecondColor-i*80);
+            mPaint.setColor(mSecondColor &((255/6*i)<<24)); //透明渐变
             float startX =(float) (centerX + Math.cos(angle*Math.PI/180)*(mLineHeight/2 + 2));
             float startY = (float) (centerY + Math.sin(angle*Math.PI/180)*(mLineHeight/2 + 2));
-            float endX =(float) (centerX + Math.cos(angle*Math.PI/180)*(mLineHeight/2 + 8));
-            float endY = (float) (centerY + Math.sin(angle*Math.PI/180)*(mLineHeight/2 + 8));
+            float endX =(float) (centerX + Math.cos(angle*Math.PI/180)*(mLineHeight/2 + 12));
+            float endY = (float) (centerY + Math.sin(angle*Math.PI/180)*(mLineHeight/2 + 12));
             canvas.drawLine(startX,startY,endX,endY,mPaint);
         }
         invalidate();
     }
+
+    /**
+     * 加载loading 动画
+     */
     private void startLoadingAnim(){
         valueAnimator = ValueAnimator.ofFloat(0,(float)Math.PI*2);
         valueAnimator.setDuration(ANIMATOR_DURATION);
@@ -210,6 +251,7 @@ public class CustomProgressBar extends View {
         mPointColor = style.mPointColor;
         mRadius = style.mRadius;
         mPointRadius = style.mPointRadius;
+        padding = mPointRadius+1;
         invalidate();
     }
 
