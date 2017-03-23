@@ -24,9 +24,7 @@ public class IndexActivity extends BaseActivity {
         initData();
     }
     private void initData(){
-
         initDemoBeans();
-
         mAdapter = new DemoBeanAdapter(mSource,this);
         mLVDemo.setAdapter(mAdapter);
 
@@ -41,6 +39,9 @@ public class IndexActivity extends BaseActivity {
 
         Intent intent2 = new Intent(this, ValueAnimatorDemoActivity.class);
         mSource.add(new DemoBean("属性动画",intent2));
+
+        Intent intent3 = new Intent(this,WidgetDisplayActivity.class);
+        mSource.add(new DemoBean("控件展示",intent3));
     }
 
 

@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
     <HorizontalScrollView
         android:layout_alignParentBottom="true"
@@ -38,5 +42,10 @@
         android:gravity="center"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+    <com.winton.demo.valueanimatortest.SplashView
+        android:id="@+id/sv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
-</RelativeLayout>
+</FrameLayout>

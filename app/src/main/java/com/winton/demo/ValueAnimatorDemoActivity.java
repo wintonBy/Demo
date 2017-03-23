@@ -5,11 +5,16 @@ import android.animation.PropertyValuesHolder;
 import android.animation.TypeEvaluator;
 import android.animation.ValueAnimator;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.view.View;
+import android.view.animation.AccelerateInterpolator;
+import android.view.animation.Interpolator;
 import android.view.animation.LinearInterpolator;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.winton.demo.valueanimatortest.SplashView;
 
 /**
  * Created by winton on 2017/1/8.
@@ -21,6 +26,10 @@ public class ValueAnimatorDemoActivity extends BaseActivity {
     private Button mBTValue;
     private Button mBTColor;
     private Button mBTObject;
+    private SplashView mSV;
+
+
+    private static Handler mUIHandler = new Handler();
 
     private ValueAnimator intValueAnimator;
     private ValueAnimator colorValueAnimator;
@@ -36,6 +45,7 @@ public class ValueAnimatorDemoActivity extends BaseActivity {
         mBTValue = (Button)findViewById(R.id.bt_value);
         mBTColor = (Button)findViewById(R.id.bt_value_color);
         mBTObject = (Button)findViewById(R.id.bt_value_object);
+        mSV = (SplashView)findViewById(R.id.sv);
         initData();
         initListener();
     }
@@ -45,7 +55,7 @@ public class ValueAnimatorDemoActivity extends BaseActivity {
         /*代码实现*/
         intValueAnimator = ValueAnimator.ofInt(0,100);
         intValueAnimator.setDuration(10000);
-        intValueAnimator.setInterpolator(new LinearInterpolator());
+        intValueAnimator.setInterpolator(new AccelerateInterpolator());
 
         /*代码实现对象动画*/
         objectValueAnimator = ValueAnimator.ofObject(new MyAnimObjectEvaluator(),new MyAnimObject(0),new MyAnimObject(10));
@@ -53,7 +63,7 @@ public class ValueAnimatorDemoActivity extends BaseActivity {
         objectValueAnimator.setInterpolator(new LinearInterpolator());
 
         /*代码实现propertyholder*/
-        propertyHolderValueAnimator = ValueAnimator.ofPropertyValuesHolder();
+        propertyHolderValueAnimator = ValueAnimator.ofArgb();
 
         intValueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
@@ -79,7 +89,21 @@ public class ValueAnimatorDemoActivity extends BaseActivity {
 
             }
         });
+
+
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mUIHandler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mSV.doLoadOver();
+            }
+        },3000);
+    }
+
     private void initListener(){
         mBTValue.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -125,6 +149,13 @@ public class ValueAnimatorDemoActivity extends BaseActivity {
         }
     }
 
+    class DiyInterpolator implements Interpolator{
+        @Override
+        public float getInterpolation(float input) {
 
+
+            return input*input;  //y = x^2;
+        }
+    }
 
 }

@@ -27,6 +27,7 @@
         <activity
             android:name=".ValueAnimatorDemoActivity"
             android:launchMode="singleInstance"/>
+        <activity android:name=".WidgetDisplayActivity"/>
     </application>
 
 </manifest>
