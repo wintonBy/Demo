@@ -12,6 +12,9 @@ import android.view.animation.ScaleAnimation;
 import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
+
+import com.winton.demo.widget.GuideView;
 
 /**
  * Created by winton on 2016/11/18.
@@ -133,5 +136,21 @@ public class AnimDemoActivity extends BaseActivity implements View.OnClickListen
     @Override
     protected void onResume() {
         super.onResume();
+        initGuide();
+
     }
+
+    private void initGuide(){
+        new GuideView.Builder(AnimDemoActivity.this)
+                .addHighLightGuideView(mBtScale,R.mipmap.icon)
+                .setTouchOutsideDismiss(true)
+                .setDismissListener(new GuideView.OnDismissListener() {
+                    @Override
+                    public void onDismiss() {
+                        Toast.makeText(AnimDemoActivity.this,"小时",Toast.LENGTH_LONG).show();
+                    }
+                }).build().show();
+
+    }
+
 }

@@ -5,8 +5,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.winton.demo.adapter.DemoBeanAdapter;
+import com.winton.demo.widget.GuideView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,8 +44,25 @@ public class IndexActivity extends BaseActivity {
 
         Intent intent3 = new Intent(this,WidgetDisplayActivity.class);
         mSource.add(new DemoBean("控件展示",intent3));
+
+        Intent intent4 = new Intent(this,KeyCodeToPyCodeActivity.class);
+        mSource.add(new DemoBean("按键事件生成代码",intent4));
+
+
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        new GuideView.Builder(IndexActivity.this).addHighLightGuideView(findViewById(R.id.iv_head),R.mipmap.icon)
+                .setTouchOutsideDismiss(true)
+                .setDismissListener(new GuideView.OnDismissListener() {
+                    @Override
+                    public void onDismiss() {
+                        Toast.makeText(IndexActivity.this,"小时",Toast.LENGTH_LONG).show();
+                    }
+                }).build().show();
+    }
 
     private void initListener(){
         mLVDemo.setOnItemClickListener(new AdapterView.OnItemClickListener() {
