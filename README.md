@@ -3,15 +3,10 @@ Demo大全，动画，图片加载，自学笔记
 
 （个人学习项目）
 
-##Index
-
+## Index
 ![image](https://github.com/wintonBy/Demo/blob/master/screen/index.png)
-
-##Anim
-
+## Anim
 ![image](https://github.com/wintonBy/Demo/blob/master/screen/anim.png)
-
-##ProgressBar
-
+## ProgressBar
 ![image](https://github.com/wintonBy/Demo/blob/master/screen/ProgressBar.gif)
 
