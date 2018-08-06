@@ -25,6 +25,10 @@
         <activity
             android:name=".AnimDemoActivity"
             android:launchMode="singleInstance"/>
+        <activity android:name=".KotlinTestActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".DLTestActivity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".InterpolatorDemoActivity"
             android:launchMode="singleInstance"/>
@@ -33,6 +37,10 @@
             android:launchMode="singleInstance"/>
         <activity android:name=".WidgetDisplayActivity"/>
         <activity android:name=".KeyCodeToPyCodeActivity"/>
+
+        <activity android:name=".launchermode.StandardActivity"
+            android:launchMode="standard"/>
+        <activity android:name=".launchermode.ModeListActivty"/>
     </application>
 
 </manifest>

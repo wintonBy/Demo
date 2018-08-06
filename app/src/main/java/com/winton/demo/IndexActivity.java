@@ -8,10 +8,13 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.winton.demo.adapter.DemoBeanAdapter;
+import com.winton.demo.launchermode.ModeListActivty;
 import com.winton.demo.widget.GuideView;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import dalvik.system.DexClassLoader;
 
 public class IndexActivity extends BaseActivity {
     private ListView mLVDemo;
@@ -47,6 +50,20 @@ public class IndexActivity extends BaseActivity {
 
         Intent intent4 = new Intent(this,KeyCodeToPyCodeActivity.class);
         mSource.add(new DemoBean("按键事件生成代码",intent4));
+
+        Intent intent5 = new Intent();
+        intent5.setClassName("com.avit.player.vr.phone","com.avit.player.vr.phone.activities.SplashActivity");
+        mSource.add(new DemoBean("VR启动入口",intent5));
+
+        Intent intent6  = new Intent(this, KotlinTestActivity.class);
+        mSource.add(new DemoBean("Kotlin测试",intent6));
+
+        Intent intent7 = new Intent(this, DLTestActivity.class);
+        mSource.add(new DemoBean("DL测试",intent7));
+
+        Intent intent8 = new Intent(this, ModeListActivty.class);
+        mSource.add(new DemoBean("启动模式",intent8));
+
 
 
     }
