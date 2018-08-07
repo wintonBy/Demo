@@ -41,6 +41,10 @@
         <activity android:name=".launchermode.StandardActivity"
             android:launchMode="standard"/>
         <activity android:name=".launchermode.ModeListActivty"/>
+
+        <activity android:name=".PicturePaperActivity"
+            android:configChanges="orientation|keyboardHidden"
+            />
     </application>
 
 </manifest>

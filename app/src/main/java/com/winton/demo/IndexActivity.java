@@ -64,7 +64,8 @@ public class IndexActivity extends BaseActivity {
         Intent intent8 = new Intent(this, ModeListActivty.class);
         mSource.add(new DemoBean("启动模式",intent8));
 
-
+        Intent intent9 = new Intent(this, PicturePaperActivity.class);
+        mSource.add(new DemoBean("画板",intent9));
 
     }
 

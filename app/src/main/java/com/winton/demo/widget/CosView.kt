@@ -19,11 +19,16 @@ class CosView :SurfaceView,SurfaceHolder.Callback,Runnable {
 
     private var isRunning = false
     private lateinit var surfaceHolder:SurfaceHolder
-    private val drawSpaceTime = 30
+    private val drawSpaceTime = 40
     private lateinit var mPaint:Paint
     private var surfaceWidth = 0f
     private var surfaceHeight = 0f
     private var step = 0.0
+    private var mainStep = 500000
+    //x方向的单位长度，即20像素代表一个单位长度
+    private val UNIT_X = 40.0
+    //y方向的单位长度，即20像素代表一个单位长度
+    private val UNIT_Y = 80.0
 
 
     constructor(context: Context?) : super(context){
@@ -69,35 +74,45 @@ class CosView :SurfaceView,SurfaceHolder.Callback,Runnable {
                 Thread.yield()
                 space = System.currentTimeMillis() - startTime
             }
-            step += PI/20
+            step += PI/36
             if(step >= 2*PI){
                 step = 0.0
             }
         }
     }
+    //数学坐标到像素点的转换
+    private fun coordinate2Pix(coordinate: Double, unit: Double): Int {
+        return (coordinate * unit).toInt()
+    }
+
+    //像素点到数学坐标的转换
+    private fun pix2Coordinate(pix: Int, unit: Double): Double {
+        return pix / unit
+    }
 
     private fun doDraw(canvas: Canvas) {
         drawXYLine(canvas)
-        drawSin(canvas)
+        drawCos(canvas)
     }
     private fun drawXYLine(canvas: Canvas){
         mPaint.color = Color.BLACK
         canvas.drawLine(0f,surfaceHeight/2,surfaceWidth,surfaceHeight/2,mPaint)
         canvas.drawLine(0f+mPaint.strokeWidth/2,0f,0f+mPaint.strokeWidth/2,surfaceHeight,mPaint)
     }
-    private fun drawSin(canvas: Canvas){
+    private fun drawCos(canvas: Canvas){
         mPaint.color = Color.RED
-        mPaint.strokeWidth = 2f
-        var lastX = mPaint.strokeWidth/2
-        var lastY = surfaceHeight/2
-        val t = 40
-        var x = 0.0
-        while (x <= surfaceWidth){
-            val y = Math.cos(x/t -step) * 80 + surfaceHeight/2
-            canvas.drawLine(lastX,lastY,x.toFloat(),y.toFloat(),mPaint)
-            lastX = x.toFloat()
-            lastY = y.toFloat()
-            x  += 0.1
+        var lastPX = 0
+        var lastPY = Math.cos(pix2Coordinate(lastPX,UNIT_X)-step)*UNIT_Y + surfaceHeight/2
+        var cx = 0.0
+        var px = 0
+        while (px <= surfaceWidth){
+            cx += mainStep
+            px = coordinate2Pix(cx,UNIT_X)
+            val py = Math.cos(cx-step)*UNIT_Y + surfaceHeight/2
+            canvas.drawLine(lastPX.toFloat(),lastPY.toFloat(),px.toFloat(),py.toFloat(),mPaint)
+            lastPX = px
+            lastPY = py
+            px = coordinate2Pix(cx,UNIT_X)
         }
     }
 }
