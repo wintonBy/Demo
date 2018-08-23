@@ -45,6 +45,9 @@
         <activity android:name=".PicturePaperActivity"
             android:configChanges="orientation|keyboardHidden"
             />
+        <activity android:name=".CoorActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar"
+            />
     </application>
 
 </manifest>

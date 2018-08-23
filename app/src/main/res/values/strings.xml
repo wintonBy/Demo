@@ -1,4 +1,149 @@
 <resources>
     <string name="app_name">Demo</string>
     <string name="blog_site">http://blog.csdn.net/wenwen091100304</string>
+    <string name="text">
+        View之间的相互作用就是一个View监听另一个View的变化从而做出响应，View的变化可以概括的分为两类：
+
+View的大小、在父布局中位置、显示状态等发生改变
+View自身的内容发生改变（比如内容发生移动）
+注意：通过下面的源码分析可知，CoordinatorLayout是通过监听视图树的绘制来监听子View的第一类变化，如果子View发生了第一类的变化并且绘制区域发生了改变就会通知依赖该子View的兄弟View。因此子View显示状态的变化只有从VISIBLE --> GONE变化时才会导致依赖该子View的兄弟View得到通知，而INVISIBLE --> GONE和VISIBLE --> INVISIBLE 不会导致依赖该子View的兄弟View得到通知。
+
+作者：ForeverCy
+链接：https://www.jianshu.com/p/6394d738713c
+來源：简书
+简书著作权归作者所有，任何形式的转载都请联系作者获得授权并注明出处。
+        View之间的相互作用就是一个View监听另一个View的变化从而做出响应，View的变化可以概括的分为两类：
+
+View的大小、在父布局中位置、显示状态等发生改变
+View自身的内容发生改变（比如内容发生移动）
+注意：通过下面的源码分析可知，CoordinatorLayout是通过监听视图树的绘制来监听子View的第一类变化，如果子View发生了第一类的变化并且绘制区域发生了改变就会通知依赖该子View的兄弟View。因此子View显示状态的变化只有从VISIBLE --> GONE变化时才会导致依赖该子View的兄弟View得到通知，而INVISIBLE --> GONE和VISIBLE --> INVISIBLE 不会导致依赖该子View的兄弟View得到通知。
+
+作者：ForeverCy
+链接：https://www.jianshu.com/p/6394d738713c
+來源：简书
+简书著作权归作者所有，任何形式的转载都请联系作者获得授权并注明出处。
+        View之间的相互作用就是一个View监听另一个View的变化从而做出响应，View的变化可以概括的分为两类：
+
+View的大小、在父布局中位置、显示状态等发生改变
+View自身的内容发生改变（比如内容发生移动）
+注意：通过下面的源码分析可知，CoordinatorLayout是通过监听视图树的绘制来监听子View的第一类变化，如果子View发生了第一类的变化并且绘制区域发生了改变就会通知依赖该子View的兄弟View。因此子View显示状态的变化只有从VISIBLE --> GONE变化时才会导致依赖该子View的兄弟View得到通知，而INVISIBLE --> GONE和VISIBLE --> INVISIBLE 不会导致依赖该子View的兄弟View得到通知。
+
+作者：ForeverCy
+链接：https://www.jianshu.com/p/6394d738713c
+來源：简书
+简书著作权归作者所有，任何形式的转载都请联系作者获得授权并注明出处。
+        View之间的相互作用就是一个View监听另一个View的变化从而做出响应，View的变化可以概括的分为两类：
+
+View的大小、在父布局中位置、显示状态等发生改变
+View自身的内容发生改变（比如内容发生移动）
+注意：通过下面的源码分析可知，CoordinatorLayout是通过监听视图树的绘制来监听子View的第一类变化，如果子View发生了第一类的变化并且绘制区域发生了改变就会通知依赖该子View的兄弟View。因此子View显示状态的变化只有从VISIBLE --> GONE变化时才会导致依赖该子View的兄弟View得到通知，而INVISIBLE --> GONE和VISIBLE --> INVISIBLE 不会导致依赖该子View的兄弟View得到通知。
+
+作者：ForeverCy
+链接：https://www.jianshu.com/p/6394d738713c
+來源：简书
+简书著作权归作者所有，任何形式的转载都请联系作者获得授权并注明出处。
+        View之间的相互作用就是一个View监听另一个View的变化从而做出响应，View的变化可以概括的分为两类：
+
+View的大小、在父布局中位置、显示状态等发生改变
+View自身的内容发生改变（比如内容发生移动）
+注意：通过下面的源码分析可知，CoordinatorLayout是通过监听视图树的绘制来监听子View的第一类变化，如果子View发生了第一类的变化并且绘制区域发生了改变就会通知依赖该子View的兄弟View。因此子View显示状态的变化只有从VISIBLE --> GONE变化时才会导致依赖该子View的兄弟View得到通知，而INVISIBLE --> GONE和VISIBLE --> INVISIBLE 不会导致依赖该子View的兄弟View得到通知。
+
+作者：ForeverCy
+链接：https://www.jianshu.com/p/6394d738713c
+來源：简书
+简书著作权归作者所有，任何形式的转载都请联系作者获得授权并注明出处。View的大小、在父布局中位置、显示状态等发生改变
+View自身的内容发生改变（比如内容发生移动）
+注意：通过下面的源码分析可知，CoordinatorLayout是通过监听视图树的绘制来监听子View的第一类变化，如果子View发生了第一类的变化并且绘制区域发生了改变就会通知依赖该子View的兄弟View。因此子View显示状态的变化只有从VISIBLE --> GONE变化时才会导致依赖该子View的兄弟View得到通知，而INVISIBLE --> GONE和VISIBLE --> INVISIBLE 不会导致依赖该子View的兄弟View得到通知。
+
+作者：ForeverCy
+链接：https://www.jianshu.com/p/6394d738713c
+來源：简书
+简书著作权归作者所有，任何形式的转载都请联系作者获得授权并注明出处。
+        View的大小、在父布局中位置、显示状态等发生改变
+View自身的内容发生改变（比如内容发生移动）
+注意：通过下面的源码分析可知，CoordinatorLayout是通过监听视图树的绘制来监听子View的第一类变化，如果子View发生了第一类的变化并且绘制区域发生了改变就会通知依赖该子View的兄弟View。因此子View显示状态的变化只有从VISIBLE --> GONE变化时才会导致依赖该子View的兄弟View得到通知，而INVISIBLE --> GONE和VISIBLE --> INVISIBLE 不会导致依赖该子View的兄弟View得到通知。
+
+作者：ForeverCy
+链接：https://www.jianshu.com/p/6394d738713c
+來源：简书
+简书著作权归作者所有，任何形式的转载都请联系作者获得授权并注明出处。View的大小、在父布局中位置、显示状态等发生改变
+View自身的内容发生改变（比如内容发生移动）
+注意：通过下面的源码分析可知，CoordinatorLayout是通过监听视图树的绘制来监听子View的第一类变化，如果子View发生了第一类的变化并且绘制区域发生了改变就会通知依赖该子View的兄弟View。因此子View显示状态的变化只有从VISIBLE --> GONE变化时才会导致依赖该子View的兄弟View得到通知，而INVISIBLE --> GONE和VISIBLE --> INVISIBLE 不会导致依赖该子View的兄弟View得到通知。
+
+作者：ForeverCy
+链接：https://www.jianshu.com/p/6394d738713c
+來源：简书
+简书著作权归作者所有，任何形式的转载都请联系作者获得授权并注明出处。View的大小、在父布局中位置、显示状态等发生改变
+View自身的内容发生改变（比如内容发生移动）
+注意：通过下面的源码分析可知，CoordinatorLayout是通过监听视图树的绘制来监听子View的第一类变化，如果子View发生了第一类的变化并且绘制区域发生了改变就会通知依赖该子View的兄弟View。因此子View显示状态的变化只有从VISIBLE --> GONE变化时才会导致依赖该子View的兄弟View得到通知，而INVISIBLE --> GONE和VISIBLE --> INVISIBLE 不会导致依赖该子View的兄弟View得到通知。
+
+作者：ForeverCy
+链接：https://www.jianshu.com/p/6394d738713c
+來源：简书
+简书著作权归作者所有，任何形式的转载都请联系作者获得授权并注明出处。View的大小、在父布局中位置、显示状态等发生改变
+View自身的内容发生改变（比如内容发生移动）
+注意：通过下面的源码分析可知，CoordinatorLayout是通过监听视图树的绘制来监听子View的第一类变化，如果子View发生了第一类的变化并且绘制区域发生了改变就会通知依赖该子View的兄弟View。因此子View显示状态的变化只有从VISIBLE --> GONE变化时才会导致依赖该子View的兄弟View得到通知，而INVISIBLE --> GONE和VISIBLE --> INVISIBLE 不会导致依赖该子View的兄弟View得到通知。
+
+作者：ForeverCy
+链接：https://www.jianshu.com/p/6394d738713c
+來源：简书
+简书著作权归作者所有，任何形式的转载都请联系作者获得授权并注明出处。View的大小、在父布局中位置、显示状态等发生改变
+View自身的内容发生改变（比如内容发生移动）
+注意：通过下面的源码分析可知，CoordinatorLayout是通过监听视图树的绘制来监听子View的第一类变化，如果子View发生了第一类的变化并且绘制区域发生了改变就会通知依赖该子View的兄弟View。因此子View显示状态的变化只有从VISIBLE --> GONE变化时才会导致依赖该子View的兄弟View得到通知，而INVISIBLE --> GONE和VISIBLE --> INVISIBLE 不会导致依赖该子View的兄弟View得到通知。
+
+作者：ForeverCy
+链接：https://www.jianshu.com/p/6394d738713c
+來源：简书
+简书著作权归作者所有，任何形式的转载都请联系作者获得授权并注明出处。View的大小、在父布局中位置、显示状态等发生改变
+View自身的内容发生改变（比如内容发生移动）
+注意：通过下面的源码分析可知，CoordinatorLayout是通过监听视图树的绘制来监听子View的第一类变化，如果子View发生了第一类的变化并且绘制区域发生了改变就会通知依赖该子View的兄弟View。因此子View显示状态的变化只有从VISIBLE --> GONE变化时才会导致依赖该子View的兄弟View得到通知，而INVISIBLE --> GONE和VISIBLE --> INVISIBLE 不会导致依赖该子View的兄弟View得到通知。
+
+作者：ForeverCy
+链接：https://www.jianshu.com/p/6394d738713c
+來源：简书
+简书著作权归作者所有，任何形式的转载都请联系作者获得授权并注明出处。View的大小、在父布局中位置、显示状态等发生改变
+View自身的内容发生改变（比如内容发生移动）
+注意：通过下面的源码分析可知，CoordinatorLayout是通过监听视图树的绘制来监听子View的第一类变化，如果子View发生了第一类的变化并且绘制区域发生了改变就会通知依赖该子View的兄弟View。因此子View显示状态的变化只有从VISIBLE --> GONE变化时才会导致依赖该子View的兄弟View得到通知，而INVISIBLE --> GONE和VISIBLE --> INVISIBLE 不会导致依赖该子View的兄弟View得到通知。
+
+作者：ForeverCy
+链接：https://www.jianshu.com/p/6394d738713c
+來源：简书
+简书著作权归作者所有，任何形式的转载都请联系作者获得授权并注明出处。View的大小、在父布局中位置、显示状态等发生改变
+View自身的内容发生改变（比如内容发生移动）
+注意：通过下面的源码分析可知，CoordinatorLayout是通过监听视图树的绘制来监听子View的第一类变化，如果子View发生了第一类的变化并且绘制区域发生了改变就会通知依赖该子View的兄弟View。因此子View显示状态的变化只有从VISIBLE --> GONE变化时才会导致依赖该子View的兄弟View得到通知，而INVISIBLE --> GONE和VISIBLE --> INVISIBLE 不会导致依赖该子View的兄弟View得到通知。
+
+作者：ForeverCy
+链接：https://www.jianshu.com/p/6394d738713c
+來源：简书
+简书著作权归作者所有，任何形式的转载都请联系作者获得授权并注明出处。View的大小、在父布局中位置、显示状态等发生改变
+View自身的内容发生改变（比如内容发生移动）
+注意：通过下面的源码分析可知，CoordinatorLayout是通过监听视图树的绘制来监听子View的第一类变化，如果子View发生了第一类的变化并且绘制区域发生了改变就会通知依赖该子View的兄弟View。因此子View显示状态的变化只有从VISIBLE --> GONE变化时才会导致依赖该子View的兄弟View得到通知，而INVISIBLE --> GONE和VISIBLE --> INVISIBLE 不会导致依赖该子View的兄弟View得到通知。
+
+作者：ForeverCy
+链接：https://www.jianshu.com/p/6394d738713c
+來源：简书
+简书著作权归作者所有，任何形式的转载都请联系作者获得授权并注明出处。View的大小、在父布局中位置、显示状态等发生改变
+View自身的内容发生改变（比如内容发生移动）
+注意：通过下面的源码分析可知，CoordinatorLayout是通过监听视图树的绘制来监听子View的第一类变化，如果子View发生了第一类的变化并且绘制区域发生了改变就会通知依赖该子View的兄弟View。因此子View显示状态的变化只有从VISIBLE --> GONE变化时才会导致依赖该子View的兄弟View得到通知，而INVISIBLE --> GONE和VISIBLE --> INVISIBLE 不会导致依赖该子View的兄弟View得到通知。
+
+作者：ForeverCy
+链接：https://www.jianshu.com/p/6394d738713c
+來源：简书
+简书著作权归作者所有，任何形式的转载都请联系作者获得授权并注明出处。View的大小、在父布局中位置、显示状态等发生改变
+View自身的内容发生改变（比如内容发生移动）
+注意：通过下面的源码分析可知，CoordinatorLayout是通过监听视图树的绘制来监听子View的第一类变化，如果子View发生了第一类的变化并且绘制区域发生了改变就会通知依赖该子View的兄弟View。因此子View显示状态的变化只有从VISIBLE --> GONE变化时才会导致依赖该子View的兄弟View得到通知，而INVISIBLE --> GONE和VISIBLE --> INVISIBLE 不会导致依赖该子View的兄弟View得到通知。
+
+作者：ForeverCy
+链接：https://www.jianshu.com/p/6394d738713c
+來源：简书
+简书著作权归作者所有，任何形式的转载都请联系作者获得授权并注明出处。View的大小、在父布局中位置、显示状态等发生改变
+View自身的内容发生改变（比如内容发生移动）
+注意：通过下面的源码分析可知，CoordinatorLayout是通过监听视图树的绘制来监听子View的第一类变化，如果子View发生了第一类的变化并且绘制区域发生了改变就会通知依赖该子View的兄弟View。因此子View显示状态的变化只有从VISIBLE --> GONE变化时才会导致依赖该子View的兄弟View得到通知，而INVISIBLE --> GONE和VISIBLE --> INVISIBLE 不会导致依赖该子View的兄弟View得到通知。
+
+作者：ForeverCy
+链接：https://www.jianshu.com/p/6394d738713c
+來源：简书
+简书著作权归作者所有，任何形式的转载都请联系作者获得授权并注明出处。
+
+    </string>
 </resources>

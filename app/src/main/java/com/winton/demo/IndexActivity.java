@@ -67,6 +67,8 @@ public class IndexActivity extends BaseActivity {
         Intent intent9 = new Intent(this, PicturePaperActivity.class);
         mSource.add(new DemoBean("画板",intent9));
 
+        Intent intent10 = new Intent(this, CoorActivity.class);
+        mSource.add(new DemoBean("CoordinatorLayout",intent10));
     }
 
     @Override
