@@ -69,6 +69,9 @@ public class IndexActivity extends BaseActivity {
 
         Intent intent10 = new Intent(this, CoorActivity.class);
         mSource.add(new DemoBean("CoordinatorLayout",intent10));
+
+        Intent intent11 = new Intent(this, JNITestActivity.class);
+        mSource.add(new DemoBean("JNITest",intent11));
     }
 
     @Override

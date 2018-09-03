@@ -74,7 +74,7 @@ class PicturePaper:SurfaceView,SurfaceHolder.Callback,Runnable {
         while (runningFlag){
             var start = System.currentTimeMillis()
             while (drawing){
-                var canvas = surfaceHolder.lockCanvas()
+                val canvas = surfaceHolder.lockCanvas()
                 canvas.drawColor(mBgColor)
                 drawPath(canvas)
                 surfaceHolder.unlockCanvasAndPost(canvas)
