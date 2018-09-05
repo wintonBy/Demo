@@ -49,6 +49,11 @@
             android:theme="@style/Theme.AppCompat.NoActionBar"
             />
         <activity android:name=".JNITestActivity"/>
+        <activity android:name=".ContentProviderActivity"/>
+
+        <provider
+            android:authorities="com.winton.demo.provider"
+            android:name=".contentprovider.MyContentProvider"/>
     </application>
 
 </manifest>
