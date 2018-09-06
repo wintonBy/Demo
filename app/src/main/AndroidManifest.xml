@@ -51,6 +51,8 @@
         <activity android:name=".JNITestActivity"/>
         <activity android:name=".ContentProviderActivity"/>
 
+        <activity android:name=".widget.CardViewActivity"/>
+
         <provider
             android:authorities="com.winton.demo.provider"
             android:name=".contentprovider.MyContentProvider"/>

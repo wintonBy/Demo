@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import com.winton.demo.adapter.DemoBeanAdapter;
 import com.winton.demo.launchermode.ModeListActivty;
+import com.winton.demo.widget.CardViewActivity;
 import com.winton.demo.widget.GuideView;
 
 import java.util.ArrayList;
@@ -76,6 +77,10 @@ public class IndexActivity extends BaseActivity {
 
         Intent intent12 = new Intent(this,ContentProviderActivity.class);
         mSource.add(new DemoBean("contentProvider",intent12));
+
+
+        Intent intent13 = new Intent(this,CardViewActivity.class);
+        mSource.add(new DemoBean("contentProvider",intent13));
     }
 
     @Override

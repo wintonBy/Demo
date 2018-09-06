@@ -33,6 +33,10 @@ class ContentProviderActivity:BaseActivity() {
     }
 
 
+
+
+
+
     private fun queryUser(){
         var uri =Uri.parse("content://com.winton.demo.provider/User")
         var contentResolver = applicationContext.contentResolver
