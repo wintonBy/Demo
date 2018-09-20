@@ -19,6 +19,6 @@ public class JNITestActivity extends BaseActivity{
         setContentView(R.layout.act_jni);
 
         TextView textView = findViewById(R.id.tv);
-        textView.setText(new JNIUtils().getStringFromNative());
+        textView.setText(new JNIDemo().doNative() + new JNIUtils().getStringFromNative());
     }
 }

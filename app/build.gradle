@@ -17,6 +17,7 @@ android {
         ndk {
             moduleName "JNITest"
         }
+
     }
     buildTypes {
         release {
@@ -32,6 +33,11 @@ android {
     }
 
 
+    externalNativeBuild {
+        ndkBuild {
+            path 'src/main/jni/Android.mk'
+        }
+    }
 }
 
 dependencies {
