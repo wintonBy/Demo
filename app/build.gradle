@@ -16,6 +16,8 @@ android {
 
         ndk {
             moduleName "JNITest"
+            //添加log库
+            ldLibs "log"
         }
 
     }
