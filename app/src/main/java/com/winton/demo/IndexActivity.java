@@ -81,6 +81,9 @@ public class IndexActivity extends BaseActivity {
 
         Intent intent13 = new Intent(this,CardViewActivity.class);
         mSource.add(new DemoBean("contentProvider",intent13));
+
+        Intent intent14 = new Intent(this,MatrixActivity.class);
+        mSource.add(new DemoBean("Matrix",intent14));
     }
 
     @Override

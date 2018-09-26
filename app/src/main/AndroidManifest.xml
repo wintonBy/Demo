@@ -52,6 +52,9 @@
         <activity android:name=".ContentProviderActivity"/>
 
         <activity android:name=".widget.CardViewActivity"/>
+        <activity android:name=".MatrixActivity"
+
+            />
 
         <provider
             android:authorities="com.winton.demo.provider"
