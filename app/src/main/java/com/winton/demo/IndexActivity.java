@@ -84,6 +84,9 @@ public class IndexActivity extends BaseActivity {
 
         Intent intent14 = new Intent(this,MatrixActivity.class);
         mSource.add(new DemoBean("Matrix",intent14));
+
+        Intent intent15 = new Intent(this,BigImageActivity.class);
+        mSource.add(new DemoBean("BigImage",intent15));
     }
 
     @Override
