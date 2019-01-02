@@ -87,6 +87,9 @@ public class IndexActivity extends BaseActivity {
 
         Intent intent15 = new Intent(this,BigImageActivity.class);
         mSource.add(new DemoBean("BigImage",intent15));
+
+        Intent intent16 = new Intent(this,BluetoothDemoActivity.class);
+        mSource.add(new DemoBean("Bluetooth",intent16));
     }
 
     @Override
