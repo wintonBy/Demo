@@ -1,6 +1,7 @@
 package com.winton.demo;
 
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 /**
  * Created by winton on 2016/11/19.

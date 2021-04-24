@@ -1,9 +1,9 @@
 package com.winton.demo.widget;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.view.ViewPager;
-import android.widget.ImageView;
+
+import androidx.annotation.Nullable;
+import androidx.viewpager.widget.ViewPager;
 
 import com.winton.demo.BaseActivity;
 import com.winton.demo.R;

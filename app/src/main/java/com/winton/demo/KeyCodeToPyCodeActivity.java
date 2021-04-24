@@ -4,19 +4,14 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
-import android.support.annotation.Nullable;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.TextView;
 
-import com.winton.demo.BaseActivity;
+import androidx.annotation.Nullable;
 
-import java.io.BufferedOutputStream;
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.OutputStream;
-import java.io.Writer;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

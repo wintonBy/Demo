@@ -14,6 +14,7 @@ public class DemoBean {
     public DemoBean(String name, Intent mIntent) {
         this.name = name;
         this.mIntent = mIntent;
+
     }
 
     public String getName() {

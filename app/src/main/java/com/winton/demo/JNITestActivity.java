@@ -1,8 +1,9 @@
 package com.winton.demo;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.widget.TextView;
+
+import androidx.annotation.Nullable;
 
 /**
  * @author: winton

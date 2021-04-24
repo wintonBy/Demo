@@ -62,6 +62,7 @@
             />
         <activity android:name=".BigImageActivity"/>
         <activity android:name=".BluetoothDemoActivity" />
+        <activity android:name=".XfermodeActivity" />
 
         <provider
             android:authorities="com.winton.demo.provider"

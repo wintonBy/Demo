@@ -1,7 +1,8 @@
 package com.winton.demo;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+
+import androidx.annotation.Nullable;
 
 /**
  * Created by winton on 2016/12/6.
